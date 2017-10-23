@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AVFoundation/AVPlayer.h"
+#import "AVFoundation/AVAsset.h"
 
 @interface MPlayerViewController : UIViewController
 {
@@ -19,7 +20,11 @@
 }
 //@property (strong, nonatomic) IBOutlet UITextField *mediainfo;
 @property (strong, nonatomic) AVPlayer *mPlayer;
-@property (strong, nonatomic) AVPlayerItem *mPlayeritem;
+@property (strong, nonatomic) AVPlayerItem *mPlayerItem;
+@property (strong, nonatomic) AVURLAsset *mAsset;
 @property (strong, nonatomic) NSURL *mURL;
+@property (strong, nonatomic) IBOutlet UIButton *playback;
+@property (strong, nonatomic) IBOutlet UIButton *stop;
+@property (strong, nonatomic) IBOutlet UISlider *progressbar;
 
 @end

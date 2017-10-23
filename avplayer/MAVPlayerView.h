@@ -12,12 +12,8 @@
 
 @class AVPlayer;
 
-@interface MAVPlayerView : UIView
-@property (nonatomic, strong) AVPlayer* mplayer;
-@property (nonatomic, strong) AVPlayerLayer* mLayer;
-
-
-- (void)setPlayer:(AVPlayer*)player;
-- (void)setVideoFillMode:(NSString *)fillMode;
-
+@interface PlayerView : UIView
+@property AVPlayer *player;
+@property (readonly) AVPlayerLayer *playerLayer;
 @end
+

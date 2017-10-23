@@ -9,33 +9,25 @@
 #import <Foundation/Foundation.h>
 #import "MAVPlayerView.h"
 
-@implementation MAVPlayerView;
+@implementation PlayerView;
 
-@synthesize mLayer, mplayer;
 
-+ (Class)layerClass
-{
+- (AVPlayer *)player {
+    return self.playerLayer.player;
+}
+
++ (Class)layerClass {
     return [AVPlayerLayer class];
 }
 
-- (AVPlayer *)player {
-    return self.mLayer.player;
-}
 
-- (void)setPlayer:(AVPlayer*)player
-{
-    self.mLayer.player = player;
-}
-
-- (void)setVideoFillMode:(NSString *)fillMode
-{
-    AVPlayerLayer *playerLayer = (AVPlayerLayer*)[self layer];
-    playerLayer.videoGravity = fillMode;
+- (void)setPlayer:(AVPlayer *)player {
+    self.playerLayer.player = player;
 }
 
 - (AVPlayerLayer *)playerLayer {
     return (AVPlayerLayer *)self.layer;
 }
 
-
 @end
+
