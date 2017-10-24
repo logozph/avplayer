@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D8BB143A1F98A8F300521730 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB14391F98A8F300521730 /* AppDelegate.m */; };
+		D8BB143D1F98A8F300521730 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB143C1F98A8F300521730 /* ViewController.m */; };
+		D8BB14401F98A8F300521730 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB143E1F98A8F300521730 /* Main.storyboard */; };
+		D8BB14421F98A8F300521730 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8BB14411F98A8F300521730 /* Assets.xcassets */; };
+		D8BB14451F98A8F300521730 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8BB14431F98A8F300521730 /* LaunchScreen.storyboard */; };
+		D8BB14481F98A8F300521730 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB14471F98A8F300521730 /* main.m */; };
+		D8BB14521F98A8F300521730 /* zavplayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB14511F98A8F300521730 /* zavplayerTests.m */; };
+		D8BB145D1F98A8F300521730 /* zavplayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB145C1F98A8F300521730 /* zavplayerUITests.m */; };
+		D8BB14761F999C1000521730 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8BB14751F999C1000521730 /* AVFoundation.framework */; };
+		D8BB147B1F999CA700521730 /* MPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB14771F999CA700521730 /* MPlayerViewController.m */; };
+		D8BB147C1F999CA700521730 /* MAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB147A1F999CA700521730 /* MAVPlayerView.m */; };
+		D8C2BBB01F9DB1A000586791 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C2BBAF1F9DB1A000586791 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D8BB144E1F98A8F300521730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8BB142D1F98A8F300521730 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8BB14341F98A8F300521730;
+			remoteInfo = zavplayer;
+		};
+		D8BB14591F98A8F300521730 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8BB142D1F98A8F300521730 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8BB14341F98A8F300521730;
+			remoteInfo = zavplayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D8BB14351F98A8F300521730 /* zavplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zavplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8BB14381F98A8F300521730 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D8BB14391F98A8F300521730 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D8BB143B1F98A8F300521730 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D8BB143C1F98A8F300521730 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D8BB143F1F98A8F300521730 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D8BB14411F98A8F300521730 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D8BB14441F98A8F300521730 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D8BB14461F98A8F300521730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8BB14471F98A8F300521730 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D8BB144D1F98A8F300521730 /* zavplayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zavplayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8BB14511F98A8F300521730 /* zavplayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zavplayerTests.m; sourceTree = "<group>"; };
+		D8BB14531F98A8F300521730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8BB14581F98A8F300521730 /* zavplayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zavplayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8BB145C1F98A8F300521730 /* zavplayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zavplayerUITests.m; sourceTree = "<group>"; };
+		D8BB145E1F98A8F300521730 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8BB14751F999C1000521730 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D8BB14771F999CA700521730 /* MPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPlayerViewController.m; sourceTree = "<group>"; };
+		D8BB14781F999CA700521730 /* MPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPlayerViewController.h; sourceTree = "<group>"; };
+		D8BB14791F999CA700521730 /* MAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVPlayerView.h; sourceTree = "<group>"; };
+		D8BB147A1F999CA700521730 /* MAVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVPlayerView.m; sourceTree = "<group>"; };
+		D8C2BBAF1F9DB1A000586791 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D8BB14321F98A8F300521730 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8C2BBB01F9DB1A000586791 /* Foundation.framework in Frameworks */,
+				D8BB14761F999C1000521730 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8BB144A1F98A8F300521730 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8BB14551F98A8F300521730 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D8BB142C1F98A8F300521730 = {
+			isa = PBXGroup;
+			children = (
+				D8BB14371F98A8F300521730 /* zavplayer */,
+				D8BB14501F98A8F300521730 /* zavplayerTests */,
+				D8BB145B1F98A8F300521730 /* zavplayerUITests */,
+				D8BB14361F98A8F300521730 /* Products */,
+				D8BB14741F999C0F00521730 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D8BB14361F98A8F300521730 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB14351F98A8F300521730 /* zavplayer.app */,
+				D8BB144D1F98A8F300521730 /* zavplayerTests.xctest */,
+				D8BB14581F98A8F300521730 /* zavplayerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D8BB14371F98A8F300521730 /* zavplayer */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB146A1F98AD9100521730 /* avplayer */,
+				D8BB14381F98A8F300521730 /* AppDelegate.h */,
+				D8BB14391F98A8F300521730 /* AppDelegate.m */,
+				D8BB143B1F98A8F300521730 /* ViewController.h */,
+				D8BB143C1F98A8F300521730 /* ViewController.m */,
+				D8BB143E1F98A8F300521730 /* Main.storyboard */,
+				D8BB14411F98A8F300521730 /* Assets.xcassets */,
+				D8BB14431F98A8F300521730 /* LaunchScreen.storyboard */,
+				D8BB14461F98A8F300521730 /* Info.plist */,
+				D8BB14471F98A8F300521730 /* main.m */,
+			);
+			path = zavplayer;
+			sourceTree = "<group>";
+		};
+		D8BB14501F98A8F300521730 /* zavplayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB14511F98A8F300521730 /* zavplayerTests.m */,
+				D8BB14531F98A8F300521730 /* Info.plist */,
+			);
+			path = zavplayerTests;
+			sourceTree = "<group>";
+		};
+		D8BB145B1F98A8F300521730 /* zavplayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB145C1F98A8F300521730 /* zavplayerUITests.m */,
+				D8BB145E1F98A8F300521730 /* Info.plist */,
+			);
+			path = zavplayerUITests;
+			sourceTree = "<group>";
+		};
+		D8BB146A1F98AD9100521730 /* avplayer */ = {
+			isa = PBXGroup;
+			children = (
+				D8BB14791F999CA700521730 /* MAVPlayerView.h */,
+				D8BB147A1F999CA700521730 /* MAVPlayerView.m */,
+				D8BB14781F999CA700521730 /* MPlayerViewController.h */,
+				D8BB14771F999CA700521730 /* MPlayerViewController.m */,
+			);
+			path = avplayer;
+			sourceTree = "<group>";
+		};
+		D8BB14741F999C0F00521730 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8C2BBAF1F9DB1A000586791 /* Foundation.framework */,
+				D8BB14751F999C1000521730 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D8BB14341F98A8F300521730 /* zavplayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8BB14611F98A8F300521730 /* Build configuration list for PBXNativeTarget "zavplayer" */;
+			buildPhases = (
+				D8BB14311F98A8F300521730 /* Sources */,
+				D8BB14321F98A8F300521730 /* Frameworks */,
+				D8BB14331F98A8F300521730 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = zavplayer;
+			productName = zavplayer;
+			productReference = D8BB14351F98A8F300521730 /* zavplayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D8BB144C1F98A8F300521730 /* zavplayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8BB14641F98A8F300521730 /* Build configuration list for PBXNativeTarget "zavplayerTests" */;
+			buildPhases = (
+				D8BB14491F98A8F300521730 /* Sources */,
+				D8BB144A1F98A8F300521730 /* Frameworks */,
+				D8BB144B1F98A8F300521730 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8BB144F1F98A8F300521730 /* PBXTargetDependency */,
+			);
+			name = zavplayerTests;
+			productName = zavplayerTests;
+			productReference = D8BB144D1F98A8F300521730 /* zavplayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D8BB14571F98A8F300521730 /* zavplayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8BB14671F98A8F300521730 /* Build configuration list for PBXNativeTarget "zavplayerUITests" */;
+			buildPhases = (
+				D8BB14541F98A8F300521730 /* Sources */,
+				D8BB14551F98A8F300521730 /* Frameworks */,
+				D8BB14561F98A8F300521730 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8BB145A1F98A8F300521730 /* PBXTargetDependency */,
+			);
+			name = zavplayerUITests;
+			productName = zavplayerUITests;
+			productReference = D8BB14581F98A8F300521730 /* zavplayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D8BB142D1F98A8F300521730 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = zhupengfei;
+				TargetAttributes = {
+					D8BB14341F98A8F300521730 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					D8BB144C1F98A8F300521730 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D8BB14341F98A8F300521730;
+					};
+					D8BB14571F98A8F300521730 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D8BB14341F98A8F300521730;
+					};
+				};
+			};
+			buildConfigurationList = D8BB14301F98A8F300521730 /* Build configuration list for PBXProject "zavplayer" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D8BB142C1F98A8F300521730;
+			productRefGroup = D8BB14361F98A8F300521730 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D8BB14341F98A8F300521730 /* zavplayer */,
+				D8BB144C1F98A8F300521730 /* zavplayerTests */,
+				D8BB14571F98A8F300521730 /* zavplayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D8BB14331F98A8F300521730 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8BB14451F98A8F300521730 /* LaunchScreen.storyboard in Resources */,
+				D8BB14421F98A8F300521730 /* Assets.xcassets in Resources */,
+				D8BB14401F98A8F300521730 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8BB144B1F98A8F300521730 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8BB14561F98A8F300521730 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D8BB14311F98A8F300521730 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8BB143D1F98A8F300521730 /* ViewController.m in Sources */,
+				D8BB14481F98A8F300521730 /* main.m in Sources */,
+				D8BB147C1F999CA700521730 /* MAVPlayerView.m in Sources */,
+				D8BB143A1F98A8F300521730 /* AppDelegate.m in Sources */,
+				D8BB147B1F999CA700521730 /* MPlayerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8BB14491F98A8F300521730 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8BB14521F98A8F300521730 /* zavplayerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8BB14541F98A8F300521730 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8BB145D1F98A8F300521730 /* zavplayerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D8BB144F1F98A8F300521730 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8BB14341F98A8F300521730 /* zavplayer */;
+			targetProxy = D8BB144E1F98A8F300521730 /* PBXContainerItemProxy */;
+		};
+		D8BB145A1F98A8F300521730 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8BB14341F98A8F300521730 /* zavplayer */;
+			targetProxy = D8BB14591F98A8F300521730 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D8BB143E1F98A8F300521730 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8BB143F1F98A8F300521730 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D8BB14431F98A8F300521730 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8BB14441F98A8F300521730 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D8BB145F1F98A8F300521730 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D8BB14601F98A8F300521730 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D8BB14621F98A8F300521730 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5JBJQE5W7;
+				INFOPLIST_FILE = zavplayer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zhu.zavplayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D8BB14631F98A8F300521730 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5JBJQE5W7;
+				INFOPLIST_FILE = zavplayer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zhu.zavplayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D8BB14651F98A8F300521730 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5JBJQE5W7;
+				INFOPLIST_FILE = zavplayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zhu.zavplayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zavplayer.app/zavplayer";
+			};
+			name = Debug;
+		};
+		D8BB14661F98A8F300521730 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5JBJQE5W7;
+				INFOPLIST_FILE = zavplayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zhu.zavplayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zavplayer.app/zavplayer";
+			};
+			name = Release;
+		};
+		D8BB14681F98A8F300521730 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5JBJQE5W7;
+				INFOPLIST_FILE = zavplayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zhu.zavplayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = zavplayer;
+			};
+			name = Debug;
+		};
+		D8BB14691F98A8F300521730 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K5JBJQE5W7;
+				INFOPLIST_FILE = zavplayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = zhu.zavplayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = zavplayer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D8BB14301F98A8F300521730 /* Build configuration list for PBXProject "zavplayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8BB145F1F98A8F300521730 /* Debug */,
+				D8BB14601F98A8F300521730 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8BB14611F98A8F300521730 /* Build configuration list for PBXNativeTarget "zavplayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8BB14621F98A8F300521730 /* Debug */,
+				D8BB14631F98A8F300521730 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8BB14641F98A8F300521730 /* Build configuration list for PBXNativeTarget "zavplayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8BB14651F98A8F300521730 /* Debug */,
+				D8BB14661F98A8F300521730 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8BB14671F98A8F300521730 /* Build configuration list for PBXNativeTarget "zavplayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8BB14681F98A8F300521730 /* Debug */,
+				D8BB14691F98A8F300521730 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D8BB142D1F98A8F300521730 /* Project object */;
+}
