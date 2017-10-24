@@ -24,7 +24,11 @@
 @property (strong, nonatomic) AVURLAsset *mAsset;
 @property (strong, nonatomic) NSURL *mURL;
 @property (strong, nonatomic) IBOutlet UIButton *playback;
+@property (strong, nonatomic) IBOutlet UIButton *pause;
 @property (strong, nonatomic) IBOutlet UIButton *stop;
 @property (strong, nonatomic) IBOutlet UISlider *progressbar;
+@property (strong, nonatomic) IBOutlet UILabel *mPlayTime;
+@property (strong, nonatomic) IBOutlet UILabel *mDuration;
+
 
 @end

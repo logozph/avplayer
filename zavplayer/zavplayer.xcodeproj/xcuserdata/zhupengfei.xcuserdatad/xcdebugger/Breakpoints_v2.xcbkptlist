@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zavplayer/avplayer/MPlayerViewController.m"
-            timestampString = "530447029.234613"
+            timestampString = "530531510.010028"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-prepareToPlay"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "-triggerprogressbar:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "zavplayer/avplayer/MPlayerViewController.m"
-            timestampString = "530447029.23507"
+            timestampString = "530531510.010327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-triggerprogressbar:"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "-updateprogress"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

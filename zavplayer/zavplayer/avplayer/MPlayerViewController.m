@@ -54,8 +54,8 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     [super viewDidLoad];
 
     CGRect rect = self.view.frame;
-    rect.origin.y = 100;
-    rect.size.height /= 2;
+    //rect.origin.y = 100;
+    //rect.size.height /= 2;
     
     PlayerView* playview = [[PlayerView alloc]initWithFrame:rect];
     UIColor* black = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
@@ -65,12 +65,21 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     [playview setPlayer:self.mPlayer];
     [self.view addSubview:playview];
     
-    [self initprogressbar];
+    [self initProgressbar];
+    [self initTextField];
+   
+    [self showButtonFront];
+    [self initmButton];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)showPlayButton{
+    self.playback.enabled = true;
+}
 
-
+-(void)showStopButton{
+    self.stop.enabled = true;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -84,6 +93,8 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     {
         [self prepareToPlay];
     }
+    
+    [self addPeriodicTimeObserver];
 }
 
 -(void)pause:(id)sender{
@@ -100,7 +111,7 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 
 -(void)prepareToPlay
 {
-    NSURL *url = [[NSURL alloc]initWithString:@"http://pcvideoyf.titan.mgtv.com/mp4/2016/dianshiju/byqc_51445/8F8F8039D7ACEB75551B0D1AFF5292A2_20160630_1_1_214.mp4/playlist.m3u8?arange=0&pm=TL2yiUZ9pBvFzsZhLeDFm3jfttENi_J3Bfu1786hkNYBPt_b8lOC8O4tKddV9GSenn~ImTCUniRpHifLvCcM~s389ULsysN33d18tsGIhV9Og202U8Ugxm5xid2akKGerdybC_6f9CBio8~yhU3zoZkFycFZCJp18ocqT7KZNN9NuOSObnoCEVmUBx_fpryhQFVOZPHpI8qH8VLdZwt6s8BShRUczDBvq7azIxBZ5ZHUgPgZqLAQdYgzMiisSF7POaCN4cLxlQ0Q_DRoSXor7xF_qmDwJ0WjlMkVPl~2zuMbsOnn45qu87HtKepSeyf2PyuPpP9cbK5QKzeUpboX5TxWH77uzBD1nY09VuDTqvw0KQcM0hH~xKjO~dRydPJBqOh9audxMnGy~xDpgXRT8A--"];
+    NSURL *url = [[NSURL alloc]initWithString:@"http://pcvideows.titan.mgtv.com/mp4/2016/dianshiju/byqc_51445/8F8F8039D7ACEB75551B0D1AFF5292A2_20160630_1_1_214.mp4/playlist.m3u8?arange=0&pm=5HqZRvGg4jel2EjlYZ5AFsxHZjTSbsZ0Rlghky7EEhiXw9Gwam__1v9l068Ql2iac5vLn8oSCUZ1uYXifkeYStVdQ5vKsB2rYBzF2yzocwEITu_HrR6r10k~QW2cD8KcUa5ODhI6zaYUY3koQtZozOpBAQ_D227MHwgZn1gir9aa8Ur8ufJ5A70YrBVlNNsa~MR5Vs01PFxBcIoPnozO7rAYYvDis5vla~6bc8oTDSJbOmxv3ehTMsC45U6Vkj~Ht_eAj_pQCc1LeLX9abS5hl47dEN6beCqgWXv7gYqxLOnuglZdsr_SKZBqbF~J6b7P9CtoT9A0QxdE1ESbyzX_Ws4MZ9mZCBZWge85qW9KbN_6RguNhVhpymUiv3ywBYKtdOqKhMLTCOIwSbm7DnKyg--"];
     mAsset = [AVURLAsset URLAssetWithURL:url options:nil];
     NSArray *assetKeys = @[@"playable", @"hasProtectedContent"];
     mPlayerItem = [AVPlayerItem playerItemWithAsset:mAsset automaticallyLoadedAssetKeys:assetKeys];
@@ -119,8 +130,8 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     // Associate the player item with the player
     mPlayer = [AVPlayer playerWithPlayerItem:mPlayerItem];
     
-    _playback.enabled = false;
-    _stop.enabled = false;
+    self.playback.enabled = false;
+    self.stop.enabled = false;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -146,8 +157,8 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
             case AVPlayerItemStatusReadyToPlay:
                 NSLog(@"stastus AVPlayerItemStatusReadyToPlay");
                 // Ready to Play
-                //[self play:@""];
-                _playback.enabled = true;
+                self.playback.enabled = true;
+                self.stop.enabled = true;
                 break;
             case AVPlayerItemStatusFailed:
                 // Failed. Examine AVPlayerItem.error
@@ -176,27 +187,25 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     NSLog(@"click play!");
     [self play: @""];
     
+    //hidden play button
+    self.pause.hidden = false;
+    self.pause.enabled = true;
+    self.playback.hidden = true;
+    
 //    UIControlState bstate = self.playback.state;
 //    UIButtonType types = self.playback.buttonType;
-    [self.playback setTitle:@"pause" forState:UIControlStateNormal];
+    //[self.playback setTitle:@"pause" forState:UIControlStateNormal];
+}
+- (IBAction)clickPause:(id)sender {
+    //hidden pause button
+    self.pause.hidden = true;
+    self.playback.hidden = false;
+    [self pause: @""];
 }
 
 - (IBAction)clickstop:(id)sender {
     NSLog(@"click stop!");
     [self stop:@""];
-}
-
--(void)initprogressbar{
-    [self.progressbar setValue:0];
-    [self.progressbar setMinimumValue:0];
-    [self.progressbar setMaximumValue:1];
-    
-    if(mAsset != nil)
-    {
-        CMTime vinfo = [mAsset duration];
-        float sec = vinfo.value/vinfo.timescale;
-        [self.progressbar setMaximumValue:sec];
-    }
 }
 
 - (IBAction)triggerprogressbar:(id)sender {
@@ -209,5 +218,71 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     };
 }
 
+//add PeriodicTimeObserver
+-(void)addPeriodicTimeObserver{
+    
+    CMTime time = CMTimeMakeWithSeconds(0.5, NSEC_PER_SEC);
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    __weak typeof(self) wSelf = self;
+    [self.mPlayer addPeriodicTimeObserverForInterval:time queue:queue usingBlock:^(CMTime time) {
+        [wSelf updateprogress];
+    }];
+}
+
+
+
+- (IBAction)seekProgress:(id)sender {
+}
+
+//progressbar
+-(void)initProgressbar{
+    CMTime fileduration = self.mAsset.duration;
+    float totalsec = fileduration.value/fileduration.timescale;
+    
+    //init progressbar
+    [self.progressbar setMinimumValue:0.0];
+    [self.progressbar setMaximumValue:totalsec];
+    [self.progressbar setValue:0.0];
+}
+
+-(void)initTextField{
+    CMTime fileduration = self.mAsset.duration;
+    float totalsec = fileduration.value/fileduration.timescale;
+    //init textfield
+    [self.mPlayTime setText:@"00:00"];
+    int min = (int)totalsec/60;
+    int sec = (int)totalsec%60;
+    NSString *durationstr = [NSString stringWithFormat:@"%2d:%2d",min,sec];
+    [self.mDuration setText:durationstr];
+}
+
+-(void)updateprogress{
+    CMTime currtime = [self.mPlayer currentTime];
+    int totalsec = (int)(currtime.value/currtime.timescale);
+    //upadte progressbar
+    [self.progressbar setValue:totalsec];
+    
+    //update textfield
+    int min = totalsec/60;
+    int sec = totalsec%60;
+    NSString *playtimestr = [NSString stringWithFormat:@"%02d:%02d",min,sec];
+    [self.mPlayTime setText:playtimestr];
+}
+
+-(void)initmButton{
+    self.playback.hidden = false;
+    self.pause.hidden = true;
+    self.stop.hidden = false;
+}
+
+-(void)showButtonFront{
+    [self.view bringSubviewToFront:self.playback];
+    [self.view bringSubviewToFront:self.stop];
+    [self.view bringSubviewToFront:self.pause];
+    [self.view bringSubviewToFront:self.progressbar];
+    
+    [self.view bringSubviewToFront:self.mPlayTime];
+    [self.view bringSubviewToFront:self.mDuration];
+}
 
 @end
