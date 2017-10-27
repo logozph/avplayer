@@ -30,5 +30,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *mPlayTime;
 @property (strong, nonatomic) IBOutlet UILabel *mDuration;
 
+@property (strong, nonatomic) IBOutlet UIToolbar *playToolBar;
+@property (strong, nonatomic) IBOutlet UILabel *mBarPlayTime;
+@property (strong, nonatomic) IBOutlet UISlider *mBarSlider;
+@property (strong, nonatomic) IBOutlet UILabel *mBarDuration;
+@property (strong, nonatomic) IBOutlet UIButton *mBarPlay;
 
 @end

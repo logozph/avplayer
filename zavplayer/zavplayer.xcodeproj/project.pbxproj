@@ -19,6 +19,9 @@
 		D8BB147B1F999CA700521730 /* MPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB14771F999CA700521730 /* MPlayerViewController.m */; };
 		D8BB147C1F999CA700521730 /* MAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BB147A1F999CA700521730 /* MAVPlayerView.m */; };
 		D8C2BBB01F9DB1A000586791 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C2BBAF1F9DB1A000586791 /* Foundation.framework */; };
+		D8EAA9121FA2D60200F314E9 /* xibTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8EAA9111FA2D60200F314E9 /* xibTestView.xib */; };
+		D8EAA9151FA2D63C00F314E9 /* xibDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EAA9141FA2D63C00F314E9 /* xibDemoView.m */; };
+		D8EDE4681FA0663200F30779 /* uiaDemoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D8EDE4671FA0663200F30779 /* uiaDemoviewcontroller.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,11 @@
 		D8BB14791F999CA700521730 /* MAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAVPlayerView.h; sourceTree = "<group>"; };
 		D8BB147A1F999CA700521730 /* MAVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAVPlayerView.m; sourceTree = "<group>"; };
 		D8C2BBAF1F9DB1A000586791 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D8EAA9111FA2D60200F314E9 /* xibTestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xibTestView.xib; sourceTree = "<group>"; };
+		D8EAA9131FA2D63C00F314E9 /* xibDemoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xibDemoView.h; sourceTree = "<group>"; };
+		D8EAA9141FA2D63C00F314E9 /* xibDemoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xibDemoView.m; sourceTree = "<group>"; };
+		D8EDE4671FA0663200F30779 /* uiaDemoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uiaDemoviewcontroller.m; sourceTree = "<group>"; };
+		D8EDE4691FA0664A00F30779 /* uiDemoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uiDemoviewcontroller.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,8 @@
 		D8BB14371F98A8F300521730 /* zavplayer */ = {
 			isa = PBXGroup;
 			children = (
+				D8EAA90B1FA2C80300F314E9 /* xibView */,
+				D8EDE4661FA065DE00F30779 /* uiDemo */,
 				D8BB146A1F98AD9100521730 /* avplayer */,
 				D8BB14381F98A8F300521730 /* AppDelegate.h */,
 				D8BB14391F98A8F300521730 /* AppDelegate.m */,
@@ -164,6 +174,25 @@
 				D8BB14751F999C1000521730 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D8EAA90B1FA2C80300F314E9 /* xibView */ = {
+			isa = PBXGroup;
+			children = (
+				D8EAA9111FA2D60200F314E9 /* xibTestView.xib */,
+				D8EAA9131FA2D63C00F314E9 /* xibDemoView.h */,
+				D8EAA9141FA2D63C00F314E9 /* xibDemoView.m */,
+			);
+			path = xibView;
+			sourceTree = "<group>";
+		};
+		D8EDE4661FA065DE00F30779 /* uiDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D8EDE4671FA0663200F30779 /* uiaDemoviewcontroller.m */,
+				D8EDE4691FA0664A00F30779 /* uiDemoviewcontroller.h */,
+			);
+			path = uiDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +303,7 @@
 			files = (
 				D8BB14451F98A8F300521730 /* LaunchScreen.storyboard in Resources */,
 				D8BB14421F98A8F300521730 /* Assets.xcassets in Resources */,
+				D8EAA9121FA2D60200F314E9 /* xibTestView.xib in Resources */,
 				D8BB14401F98A8F300521730 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,7 +329,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8EAA9151FA2D63C00F314E9 /* xibDemoView.m in Sources */,
 				D8BB143D1F98A8F300521730 /* ViewController.m in Sources */,
+				D8EDE4681FA0663200F30779 /* uiaDemoviewcontroller.m in Sources */,
 				D8BB14481F98A8F300521730 /* main.m in Sources */,
 				D8BB147C1F999CA700521730 /* MAVPlayerView.m in Sources */,
 				D8BB143A1F98A8F300521730 /* AppDelegate.m in Sources */,
