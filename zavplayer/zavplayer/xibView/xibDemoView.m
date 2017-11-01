@@ -29,6 +29,30 @@
 }
 
 -(void)awakeFromNib{
-    NSLog(@"awake from nib");
+    [super awakeFromNib];
 }
+
+- (IBAction)clickPlay:(id)sender {
+    
+}
+
+- (IBAction)clickSeek:(id)sender {
+    
+}
+
+-(void)initSlider{
+    [self.progressSlider setValue:0.0f];
+    
+    //TODO
+    [self.progressSlider setMaximumValue:0];
+}
+
+-(void)updateProgress{
+    
+}
+
+-(void)setButtonIcon{
+    [self.playButt setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+}
+
 @end

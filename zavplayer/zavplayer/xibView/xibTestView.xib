@@ -22,6 +22,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gm-Xy-tLz">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="46"/>
                             <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="clickPlay:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZRU-K2-SEQ"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2zH-Ga-Avx">
                             <rect key="frame" x="50" y="9" width="50" height="30"/>
@@ -43,6 +46,9 @@
                         </label>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ybv-aC-Q1O">
                             <rect key="frame" x="100" y="9" width="225" height="29"/>
+                            <connections>
+                                <action selector="clickSeek:" destination="iN0-l3-epB" eventType="valueChanged" id="bf3-8R-80C"/>
+                            </connections>
                         </slider>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -64,7 +70,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.49113529512976462" green="0.9658561789444734" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="gXV-9j-a5S" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="5Jb-LA-VPn"/>
                 <constraint firstItem="gXV-9j-a5S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DF9-Wh-BSb"/>
@@ -73,6 +79,13 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="controlView" destination="gXV-9j-a5S" id="xXv-s5-6WO"/>
+                <outlet property="playButt" destination="7gm-Xy-tLz" id="0SR-QZ-aBe"/>
+                <outlet property="playedTime" destination="2zH-Ga-Avx" id="kpA-zk-zgE"/>
+                <outlet property="progressSlider" destination="Ybv-aC-Q1O" id="wva-fE-1jQ"/>
+                <outlet property="totalTime" destination="6xN-XE-aX1" id="2ll-Xu-b6x"/>
+            </connections>
             <point key="canvasLocation" x="34.5" y="48"/>
         </view>
     </objects>

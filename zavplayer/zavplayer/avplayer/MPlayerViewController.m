@@ -77,6 +77,7 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     
     
     xibDemoView *xibview = [xibDemoView loadFromNib];
+    [xibview setButtonIcon];
     CGRect viewrect = CGRectMake(0, 20, rect.size.width, rect.size.height*0.4);
     xibview.frame = viewrect;
     [self.view addSubview:xibview];
