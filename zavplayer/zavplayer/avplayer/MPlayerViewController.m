@@ -10,7 +10,6 @@
 #import "MPlayerViewController.h"
 #import "MAVPlayerView.h"
 #import "Foundation/NSError.h"
-#import "../xibView/xibDemoView.h"
 
 
 
@@ -56,15 +55,12 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    CGRect rect = self.view.frame;
     //rect.origin.y = 100;
     //rect.size.height /= 2;
-    
-    PlayerView* playview = [[PlayerView alloc]initWithFrame:rect];
-    UIColor* black = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+
 //    playview.backgroundColor = black;
 //
-//    [self prepareToPlay];
+    [self prepareToPlay];
 //    [playview setPlayer:self.mPlayer];
 //    [self.view addSubview:playview];
 //
@@ -73,14 +69,27 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 //
 //    [self showButtonFront];
 //    [self initmButton];
-//    self.isplaying = false;
-    
-    
-    xibDemoView *xibview = [xibDemoView loadFromNib];
-    [xibview setButtonIcon];
+
+    self.isplaying = false;
+    CGRect rect = self.view.frame;
+    self.myXibView = [xibDemoView loadFromNib];
+    self.myXibView.delegate = self;
+    [self.myXibView setButtonIcon];
     CGRect viewrect = CGRectMake(0, 20, rect.size.width, rect.size.height*0.4);
-    xibview.frame = viewrect;
-    [self.view addSubview:xibview];
+    self.myXibView.frame = viewrect;
+    [self.view addSubview:self.myXibView ];
+
+    CGRect rect_play = self.myXibView.frame;
+    rect_play.origin.x = 0;
+    rect_play.origin.y = 0;
+    PlayerView* playview = [[PlayerView alloc]initWithFrame:rect_play];
+    //UIColor* black = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+
+    [self.myXibView addSubview:playview];
+    [self.myXibView showControl];
+
+    [playview setPlayer:self.mPlayer];
+    //[playview setBackgroundColor:black];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -122,7 +131,7 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 
 -(void)prepareToPlay
 {
-    NSURL *url = [[NSURL alloc]initWithString:@"http://pcvideoyf.titan.mgtv.com/mp4/2016/dianshiju/byqc_51445/8F8F8039D7ACEB75551B0D1AFF5292A2_20160630_1_1_214.mp4/playlist.m3u8?arange=0&pm=wQD~2LmeLQIFwwnppAYm~2FBi0bnTO2pQ_gJ9UauBrQII4poPa0jit2zVAJ55VKc~IRgZ0DMnmG1dcp_SbVJmn08cBXf4yXMctLeQaJPayed0hW0_fS2ZkmsszayyKGddpC0AfbSBJYObPEUwIYreYsQvd~8IKEQMd_wo2Yy~FgjBG9pPBASG2EUb_s8Nxcy~FNsk2Yu66Q30mnJMj3qEypf4pyp5njNG4BSd51RNk4Ki8RZaS_x9BwryoaJe66_f~BnQ4FfNnucoI~nfhDE0~SWvmZAyS~~ixDa5tREc2FZggbm8YYapwWbPurdKA3utqJRLuoftqlRhkI3SYEVCquk5WSJ6vMWfyfEWAtLiB8qyMqmIXKuo5WAvZTkG4RALMcgNkaUMBdjmTIsEIOeig--"];
+    NSURL *url = [[NSURL alloc]initWithString:@"http://mobaliyun.res.mgtv.com/new_video/2017/10/27/1021/5FB9EAC11551779E3C7DA7DF5E9BAF41_20171027_1_1_666.mp4"];
     mAsset = [AVURLAsset URLAssetWithURL:url options:nil];
     NSArray *assetKeys = @[@"playable", @"hasProtectedContent"];
     mPlayerItem = [AVPlayerItem playerItemWithAsset:mAsset automaticallyLoadedAssetKeys:assetKeys];
@@ -168,11 +177,10 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
         NSError *err = nil;
         switch (status) {
             case AVPlayerItemStatusReadyToPlay:
-                NSLog(@"stastus AVPlayerItemStatusReadyToPlay");
+                NSLog(@"status AVPlayerItemStatusReadyToPlay");
                 // Ready to Play
-                self.playback.enabled = true;
-                self.stop.enabled = true;
-                self.mBarPlay.enabled = true;
+                //init progressbar
+                [self initProgressbarAndField];
                 break;
             case AVPlayerItemStatusFailed:
                 // Failed. Examine AVPlayerItem.error
@@ -197,19 +205,6 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     mURL = URL;
 }
 
-- (IBAction)clickplay:(id)sender {
-    NSLog(@"click play!");
-    [self play: @""];
-    
-    //hidden play button
-    self.pause.hidden = false;
-    self.pause.enabled = true;
-    self.playback.hidden = true;
-    
-//    UIControlState bstate = self.playback.state;
-//    UIButtonType types = self.playback.buttonType;
-    //[self.playback setTitle:@"pause" forState:UIControlStateNormal];
-}
 - (IBAction)clickPause:(id)sender {
     //hidden pause button
     self.pause.hidden = true;
@@ -220,16 +215,6 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 - (IBAction)clickstop:(id)sender {
     NSLog(@"click stop!");
     [self stop:@""];
-}
-
-- (IBAction)triggerprogressbar:(id)sender {
-    float currtime = self.progressbar.value;
-    CMTime time = CMTimeMakeWithSeconds(currtime, 1);
-    NSLog(@"seek to time %f second", currtime);
-    if(currtime > 0)
-    {
-        [mPlayer seekToTime:time];
-    };
 }
 
 //add PeriodicTimeObserver
@@ -243,76 +228,29 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     }];
 }
 
-
-
-- (IBAction)seekProgress:(id)sender {
-}
-
 //progressbar
--(void)initProgressbar{
+-(void)initProgressbarAndField{
     CMTime fileduration = self.mAsset.duration;
     float totalsec = fileduration.value/fileduration.timescale;
-    
-    //init progressbar
-    [self.progressbar setMinimumValue:0.0];
-    [self.progressbar setMaximumValue:totalsec];
-    [self.progressbar setValue:0.0];
-    
-    //init progressbar
-    [self.mBarSlider setMinimumValue:0.0];
-    [self.mBarSlider setMaximumValue:totalsec];
-    [self.mBarSlider setValue:0.0];
+
+    [self.myXibView initSliderAndField:totalsec];
 }
 
 -(void)initTextField{
     CMTime fileduration = self.mAsset.duration;
     float totalsec = fileduration.value/fileduration.timescale;
-    //init textfield
-    [self.mPlayTime setText:@"00:00"];
-    int min = (int)totalsec/60;
-    int sec = (int)totalsec%60;
-    NSString *durationstr = [NSString stringWithFormat:@"%02d:%02d",min,sec];
-    [self.mDuration setText:durationstr];
-    
-    [self.mBarDuration setText:durationstr];
+
+    [self.myXibView initSliderAndField:totalsec];
 }
 
 -(void)updateprogress{
     CMTime currtime = [self.mPlayer currentTime];
     int totalsec = (int)(currtime.value/currtime.timescale);
-    //upadte progressbar
-    [self.progressbar setValue:totalsec];
-    [self.mBarSlider setValue:totalsec];
-    
-    //update textfield
-    int min = totalsec/60;
-    int sec = totalsec%60;
-    NSString *playtimestr = [NSString stringWithFormat:@"%02d:%02d",min,sec];
-    [self.mPlayTime setText:playtimestr];
-    
-    
-    [self.mBarPlayTime setText:playtimestr];
+
+    [self.myXibView updateProgress:totalsec];
 }
 
--(void)initmButton{
-    self.playback.hidden = false;
-    self.pause.hidden = true;
-    self.stop.hidden = false;
-}
-
--(void)showButtonFront{
-//    [self.view bringSubviewToFront:self.playback];
-//    [self.view bringSubviewToFront:self.stop];
-//    [self.view bringSubviewToFront:self.pause];
-//    [self.view bringSubviewToFront:self.progressbar];
-//
-//    [self.view bringSubviewToFront:self.mPlayTime];
-//    [self.view bringSubviewToFront:self.mDuration];
-    
-    [self.view bringSubviewToFront:self.playToolBar];
-}
-
-- (IBAction)barPlay:(id)sender {
+-(void)clickPlay{
     if(self.isplaying == false)
     {
         [self play: @""];
@@ -327,11 +265,10 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     }
 }
 
-- (IBAction)barClickProgress:(id)sender {
-    float currtime = self.mBarSlider.value;
-    CMTime time = CMTimeMakeWithSeconds(currtime, 1);
-    
-    if(currtime > 0)
+-(void)clickSeek: (float) sec{
+    CMTime time = CMTimeMakeWithSeconds(sec, 1);
+    NSLog(@"seek to time %f second", sec);
+    if(sec > 0)
     {
         [mPlayer seekToTime:time];
     };

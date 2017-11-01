@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AVFoundation/AVPlayer.h"
 #import "AVFoundation/AVAsset.h"
+#import "xibDemoView.h"
+#import "PlayerDelegate.h"
 
-@interface MPlayerViewController : UIViewController
+@interface MPlayerViewController : UIViewController<PlayerDelegate>
 {
 @private
     AVPlayer* mPlayer;
@@ -35,5 +37,8 @@
 @property (strong, nonatomic) IBOutlet UISlider *mBarSlider;
 @property (strong, nonatomic) IBOutlet UILabel *mBarDuration;
 @property (strong, nonatomic) IBOutlet UIButton *mBarPlay;
+
+
+@property (strong, nonatomic) xibDemoView *myXibView;
 
 @end

@@ -30,29 +30,64 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
+    self.isControlshow = false;
 }
 
 - (IBAction)clickPlay:(id)sender {
-    
+    if(self.delegate){
+        [self.delegate clickPlay];
+    }
 }
 
 - (IBAction)clickSeek:(id)sender {
-    
+    float seek_time = self.progressSlider.value;
+    if(self.delegate){
+        [self.delegate clickSeek:seek_time];
+    }
 }
 
--(void)initSlider{
+-(void)initSliderAndField: (int)totalsec{
     [self.progressSlider setValue:0.0f];
     
     //TODO
-    [self.progressSlider setMaximumValue:0];
+    [self.progressSlider setMaximumValue:totalsec];
+    [self.progressSlider setMinimumValue:0];
+
+
+    int sec = totalsec/60;
+    int min = totalsec%60;
+    NSString *playtimestr = [NSString stringWithFormat:@"%02d:%02d",min,sec];
+    [self.totalTime setText:playtimestr];
 }
 
--(void)updateProgress{
-    
+-(void)updateProgress: (int)sec{
+
+    //upadte progressbar
+    [self.progressSlider setValue:sec];
+
+    //update textfield
+    int min = sec/60;
+    int m_sec = sec%60;
+    NSString *playtimestr = [NSString stringWithFormat:@"%02d:%02d",min,m_sec];
+    [self.playedTime setText:playtimestr];
 }
 
 -(void)setButtonIcon{
     [self.playButt setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
 }
+
+-(void)showControl{
+    if(self.isControlshow == false){
+        [self bringSubviewToFront:self.controlView];
+        self.controlView.hidden = false;
+        self.isControlshow = true;
+    }
+    else{
+        self.controlView.hidden = true;
+        self.isControlshow = false;
+    }
+}
+
+
 
 @end
