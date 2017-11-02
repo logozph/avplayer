@@ -53,9 +53,8 @@
     [self.progressSlider setMaximumValue:totalsec];
     [self.progressSlider setMinimumValue:0];
 
-
-    int sec = totalsec/60;
-    int min = totalsec%60;
+    int min = totalsec/60;
+    int sec = totalsec%60;
     NSString *playtimestr = [NSString stringWithFormat:@"%02d:%02d",min,sec];
     [self.totalTime setText:playtimestr];
 }
@@ -72,8 +71,16 @@
     [self.playedTime setText:playtimestr];
 }
 
--(void)setButtonIcon{
-    [self.playButt setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+-(void)setButtonIcon: (Boolean) play{
+    if(play)
+        [self.playButt setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
+    else
+        [self.playButt setImage:[UIImage imageNamed:@"pause-butt"] forState:UIControlStateNormal];
+}
+
+-(void)bringControlViewToFront{
+    [self bringSubviewToFront:self.controlView];
+    [self bringSubviewToFront:self.progressView];
 }
 
 -(void)showControl{
@@ -88,6 +95,19 @@
     }
 }
 
+-(void)showProgressView: (BOOL) show{
+    if(show){
+        self.progressView.hidden = false;
+    }
+    else{
+        self.progressView.hidden = true;
+    }
+}
+
+-(void)bufferempty: (float) speed{
+    NSString *text = [NSString stringWithFormat:@"%0.2f KB/s", speed];
+    [self.networkDisplay setText:text];
+}
 
 
 @end

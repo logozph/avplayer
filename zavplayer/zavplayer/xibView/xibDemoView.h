@@ -17,7 +17,7 @@ enum outletTagInfo{
 
 + (instancetype)loadFromNib;
 
--(void)setButtonIcon;
+
 
 @property (nonatomic, weak) id<PlayerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIView *controlView;
@@ -25,10 +25,16 @@ enum outletTagInfo{
 @property (strong, nonatomic) IBOutlet UILabel *totalTime;
 @property (strong, nonatomic) IBOutlet UISlider *progressSlider;
 @property (strong, nonatomic) IBOutlet UIButton *playButt;
+@property (strong, nonatomic) IBOutlet UIView *progressView;
+@property (strong, nonatomic) IBOutlet UILabel *networkDisplay;
 
 @property (nonatomic) Boolean isControlshow;
 
+-(void)bringControlViewToFront;
 -(void)showControl;
+-(void)showProgressView: (BOOL) show;
 -(void)updateProgress: (int)sec;
 -(void)initSliderAndField: (int)totalsec;
+-(void)setButtonIcon: (Boolean) play;
+-(void)bufferempty: (float) speed;
 @end

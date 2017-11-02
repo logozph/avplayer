@@ -54,27 +54,14 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    //rect.origin.y = 100;
-    //rect.size.height /= 2;
-
-//    playview.backgroundColor = black;
-//
+    
     [self prepareToPlay];
-//    [playview setPlayer:self.mPlayer];
-//    [self.view addSubview:playview];
-//
-//    [self initProgressbar];
-//    [self initTextField];
-//
-//    [self showButtonFront];
-//    [self initmButton];
 
     self.isplaying = false;
     CGRect rect = self.view.frame;
     self.myXibView = [xibDemoView loadFromNib];
     self.myXibView.delegate = self;
-    [self.myXibView setButtonIcon];
+    [self.myXibView setButtonIcon: true];
     CGRect viewrect = CGRectMake(0, 20, rect.size.width, rect.size.height*0.4);
     self.myXibView.frame = viewrect;
     [self.view addSubview:self.myXibView ];
@@ -85,9 +72,10 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     PlayerView* playview = [[PlayerView alloc]initWithFrame:rect_play];
     //UIColor* black = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
 
-    [self.myXibView addSubview:playview];
-    [self.myXibView showControl];
-
+    //[self.myXibView addSubview:playview];
+    [self.myXibView insertSubview:playview atIndex:0];
+    //[self.myXibView showControl];
+    //[self.myXibView bringControlViewToFront];
     [playview setPlayer:self.mPlayer];
     //[playview setBackgroundColor:black];
     // Do any additional setup after loading the view, typically from a nib.
@@ -107,8 +95,10 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 }
 
 -(void)play:(id)sender{
-    if(mPlayer)
+    if(mPlayer){
         [mPlayer play];
+        self.playstate = ZPlayerStatusPlaying;
+    }
     else
     {
         [self prepareToPlay];
@@ -119,6 +109,7 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 
 -(void)pause:(id)sender{
     [mPlayer pause];
+    self.playstate = ZPlayerStatusPause;
 }
 
 -(void)stop:(id)sender{
@@ -131,10 +122,15 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
 
 -(void)prepareToPlay
 {
-    NSURL *url = [[NSURL alloc]initWithString:@"http://mobaliyun.res.mgtv.com/new_video/2017/10/27/1021/5FB9EAC11551779E3C7DA7DF5E9BAF41_20171027_1_1_666.mp4"];
+    //ad
+    //http://mobaliyun.res.mgtv.com/new_video/2017/10/27/1021/5FB9EAC11551779E3C7DA7DF5E9BAF41_20171027_1_1_666.mp4
+    //
+    NSURL *url = [[NSURL alloc]initWithString:@"http://pcvideoyf.titan.mgtv.com/c1/2017/11/02_0/16ABC431F58120C330D71837D739FA13_20171102_1_1_2842_mp4/6AD59933ABA98F4BD287911AA29B49EC.m3u8?arange=0&pm=PnxdyoZwM8VcT1kCa_zGlf53pxHOPesVB6QGVpFrL14l3hJAnIQzaHpMea3jgIWOTSMkuXF3UpP~0c2~Eb0LiawAS3jE3VHmH98BRjRi5M7v3FlMEj4QhezmcYeQo~k6KsPOWTmO_NvNamjkUvZa6Uqr1NiOAb5twXdzsqNQKPSEkXxZIjdekpNUkf9RRdzhWdpotXkrsJyri5dyR1b7BM9LFc8T7Reg_HNmmf2Ph52E_TUSHXBtRmeMj9v88tXTC3HJC837HYqR74YvzI5efJnHzh23~BduYA0D_EVk9n0OBN3kDWQ203ErCLVR2mPAD1gzBdW7b2E6rdKGOjE6YDjhspgq5U3vvT_flspCA082UyaUGzlL8~KaYDaVgSQbL7VGrTOAxkaN~_uBtTGFpj~U~WYAI9HF0c026SZNP9R_uEWamsxyq2cAfNE-"];
     mAsset = [AVURLAsset URLAssetWithURL:url options:nil];
     NSArray *assetKeys = @[@"playable", @"hasProtectedContent"];
     mPlayerItem = [AVPlayerItem playerItemWithAsset:mAsset automaticallyLoadedAssetKeys:assetKeys];
+    
+    
     
     //CMTime vinfo = [mAsset duration];
 
@@ -146,6 +142,24 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
                  forKeyPath:@"status"
                     options:options
                     context:&AVPlayerDemoPlaybackViewControllerStatusObservationContext];
+    
+    //observer buffer
+    [mPlayerItem addObserver:self forKeyPath:@"playbackBufferEmpty"
+                     options:options
+                     context:AVPlayerDemoPlaybackViewControllerStatusObservationContext];
+    
+    //observer buffer
+    [mPlayerItem addObserver:self forKeyPath:@"playbackBufferFull"
+                     options:options
+                     context:AVPlayerDemoPlaybackViewControllerStatusObservationContext];
+    
+    [mPlayerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp"
+                     options:options
+                     context:AVPlayerDemoPlaybackViewControllerStatusObservationContext];
+    
+    
+    //add playend
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(movieDidPlayToEndTime) name:AVPlayerItemDidPlayToEndTimeNotification object:mPlayerItem];
     
     // Associate the player item with the player
     mPlayer = [AVPlayer playerWithPlayerItem:mPlayerItem];
@@ -190,6 +204,43 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
             case AVPlayerItemStatusUnknown:
                 // Not ready
                 break;
+        }
+    }
+    else if([keyPath isEqualToString:@"playbackBufferEmpty"]){
+        NSNumber *bufferempty = change[NSKeyValueChangeNewKey];
+        bool result = [bufferempty boolValue];
+        if(result){
+            NSLog(@"buffer empty");
+            if(self.playstate != ZPlayerStatusSuspend){
+                //show buffer view
+                [self.myXibView showProgressView:true];
+                self.playstate = ZPlayerStatusSuspend;
+            }
+        }else{
+            NSLog(@"buffer ok");
+            //disappear buffer view
+            [self.myXibView showProgressView:false];
+        }
+    }
+    else if([keyPath isEqualToString:@"playbackBufferFull"]){
+        NSNumber *value = change[NSKeyValueChangeNewKey];
+        bool bufferfull = [value boolValue];
+        if(bufferfull){
+            NSLog(@"buffer full");
+        }
+        else{
+            NSLog(@"buffering");
+        }
+    }
+    else if([keyPath isEqualToString:@"playbackLikelyToKeepUp"]){
+        NSNumber *newvalue = change[NSKeyValueChangeNewKey];
+        NSNumber *oldvalue = change[NSKeyValueChangeOldKey];
+        
+        bool newkeekup = [newvalue boolValue];
+        bool oldkeekup = [oldvalue boolValue];
+        if((newkeekup != oldkeekup) && (self.playstate == ZPlayerStatusSuspend)){
+            self.playstate = ZPlayerStatusPlaying;
+            [self.myXibView showProgressView:false];
         }
     }
 }
@@ -248,20 +299,35 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     int totalsec = (int)(currtime.value/currtime.timescale);
 
     [self.myXibView updateProgress:totalsec];
+    
+    
+    
+    //rate 设置播放速率 1.0正常播放  >1.0 倍速播放  <1.0 低速播放
+//    if([self.mPlayerItem canPlaySlowForward])
+//        [self.mPlayer setRate:2.0];
+//    float curr_rate = [self.mPlayer rate];
+//    NSLog(@"curr rate : %f", curr_rate);
+    
+    NSArray<NSValue *> *times = self.mPlayerItem.loadedTimeRanges;
+    CMTimeRange range = [[times firstObject] CMTimeRangeValue];
+    float start_time = CMTimeGetSeconds(range.start);
+    float buffer_range = CMTimeGetSeconds(range.duration);
+    int buffer_time = start_time + buffer_range;
+    NSLog(@"buffer time: %02d:%02d", buffer_time/60, buffer_time%60);
 }
 
 -(void)clickPlay{
     if(self.isplaying == false)
     {
         [self play: @""];
-        [self.mBarPlay setTitle:@"Pause" forState:UIControlStateNormal];
         self.isplaying = true;
+        [self.myXibView setButtonIcon:false];
     }
     else
     {
         self.isplaying = false;
         [self pause: @""];
-        [self.mBarPlay setTitle:@"Play" forState:UIControlStateNormal];
+        [self.myXibView setButtonIcon:true];
     }
 }
 
@@ -274,5 +340,7 @@ static void *AVPlayerDemoPlaybackViewControllerStatusObservationContext = &AVPla
     };
 }
 
-
+-(void)movieDidPlayToEndTime{
+    NSLog(@"movieDidPlayToEndTime");
+}
 @end

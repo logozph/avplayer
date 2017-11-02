@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,21 +70,61 @@
                         <constraint firstItem="2zH-Ga-Avx" firstAttribute="leading" secondItem="gXV-9j-a5S" secondAttribute="leading" constant="50" id="xfx-hn-3CP"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hV4-rb-DrP" userLabel="progress view">
+                    <rect key="frame" x="112" y="110" width="153" height="72"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tuY-6j-jmw">
+                            <rect key="frame" x="65" y="8" width="30" height="45"/>
+                        </stackView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="CBZ-f4-e6N">
+                            <rect key="frame" x="65" y="15" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="4ho-KQ-Qha"/>
+                                <constraint firstAttribute="height" constant="30" id="FRQ-dB-U8d"/>
+                            </constraints>
+                            <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网速" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-Gc-aTV">
+                            <rect key="frame" x="13" y="49" width="135" height="14"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="tuY-6j-jmw" firstAttribute="top" secondItem="hV4-rb-DrP" secondAttribute="topMargin" id="1Xy-lh-ggs"/>
+                        <constraint firstItem="Rxd-Gc-aTV" firstAttribute="leading" secondItem="hV4-rb-DrP" secondAttribute="leading" constant="13" id="AMy-Vw-weD"/>
+                        <constraint firstItem="CBZ-f4-e6N" firstAttribute="leading" secondItem="tuY-6j-jmw" secondAttribute="leading" id="Azk-EO-7di"/>
+                        <constraint firstItem="Rxd-Gc-aTV" firstAttribute="top" secondItem="CBZ-f4-e6N" secondAttribute="bottom" constant="4" id="GrB-hW-mub"/>
+                        <constraint firstItem="Rxd-Gc-aTV" firstAttribute="centerX" secondItem="CBZ-f4-e6N" secondAttribute="centerX" id="PHF-hl-fyZ"/>
+                        <constraint firstItem="tuY-6j-jmw" firstAttribute="leading" secondItem="hV4-rb-DrP" secondAttribute="leading" constant="65" id="UV2-wT-gC3"/>
+                        <constraint firstItem="CBZ-f4-e6N" firstAttribute="trailing" secondItem="tuY-6j-jmw" secondAttribute="trailing" id="WrM-R1-HTS"/>
+                        <constraint firstItem="tuY-6j-jmw" firstAttribute="centerY" secondItem="CBZ-f4-e6N" secondAttribute="centerY" id="Xyp-pQ-UYn"/>
+                        <constraint firstItem="CBZ-f4-e6N" firstAttribute="top" secondItem="hV4-rb-DrP" secondAttribute="top" constant="15" id="h3Z-KV-R6F"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="gXV-9j-a5S" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="5Jb-LA-VPn"/>
                 <constraint firstItem="gXV-9j-a5S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DF9-Wh-BSb"/>
                 <constraint firstAttribute="trailing" secondItem="gXV-9j-a5S" secondAttribute="trailing" id="Dck-DE-glq"/>
+                <constraint firstItem="hV4-rb-DrP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="112" id="XBc-jX-IPE"/>
+                <constraint firstItem="hV4-rb-DrP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="110" id="fbz-hu-PKT"/>
                 <constraint firstItem="gXV-9j-a5S" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="242" id="iun-M6-JHZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hV4-rb-DrP" secondAttribute="trailing" constant="110" id="lMP-0n-xKH"/>
+                <constraint firstItem="gXV-9j-a5S" firstAttribute="top" secondItem="hV4-rb-DrP" secondAttribute="bottom" constant="60" id="qxd-qn-uVy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="controlView" destination="gXV-9j-a5S" id="xXv-s5-6WO"/>
+                <outlet property="networkDisplay" destination="Rxd-Gc-aTV" id="OnE-AW-ccv"/>
                 <outlet property="playButt" destination="7gm-Xy-tLz" id="0SR-QZ-aBe"/>
                 <outlet property="playedTime" destination="2zH-Ga-Avx" id="kpA-zk-zgE"/>
                 <outlet property="progressSlider" destination="Ybv-aC-Q1O" id="wva-fE-1jQ"/>
+                <outlet property="progressView" destination="hV4-rb-DrP" id="umN-no-DpC"/>
                 <outlet property="totalTime" destination="6xN-XE-aX1" id="2ll-Xu-b6x"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="48"/>

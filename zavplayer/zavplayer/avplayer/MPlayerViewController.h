@@ -12,6 +12,14 @@
 #import "xibDemoView.h"
 #import "PlayerDelegate.h"
 
+enum ZPlayerStatus{
+    ZPlayerStatusUnknow,
+    ZPlayerStatusPlaying,
+    ZPlayerStatusPause,
+    ZPlayerStatusSuspend,
+    ZPlayerStatusStop
+};
+
 @interface MPlayerViewController : UIViewController<PlayerDelegate>
 {
 @private
@@ -40,5 +48,6 @@
 
 
 @property (strong, nonatomic) xibDemoView *myXibView;
+@property (nonatomic) enum ZPlayerStatus playstate;
 
 @end
